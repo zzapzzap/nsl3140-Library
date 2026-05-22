@@ -6,7 +6,7 @@
 #endif
 
 #define NSL_SDK_VERSION_MAJOR			1
-#define NSL_SDK_VERSION_MINOR			11
+#define NSL_SDK_VERSION_MINOR			12
 
 #define NSL_MAX_HANDLE_SIZE			10
 
@@ -305,6 +305,14 @@ typedef struct ImuData_
 	float roll, pitch, yaw;
 }ImuData;
 
+
+typedef struct Point3D_ {    
+	double x;    
+	double y;
+	double z;
+}Point3D;
+
+
 typedef struct NslConfig_
 {	
 	//Integration time
@@ -401,7 +409,8 @@ typedef struct NslPCD_{
 
 	bool 				includeRgb;			// true : include RGB, false : not include RGB
 	bool 				includeLidar;		// true : include Lidar Data, false : not include Lidar Data
-	bool 				includeImu;			// tru e: include IMU(Accel + Gyro) Data, false : not include IMU Data
+	bool 				includeImu;			// true: include IMU(Accel + Gyro) Data, false : not include IMU Data
+	bool 				includeYml;			// true: RGB and Lidar are calibrated, false : not calibrated
 	
 	int 					width;				// Width of lidar or rgb image
 	int 					height;				// height of lidar or rgb image
@@ -1069,6 +1078,31 @@ NSLTOF_API NslOption::NslVec3b nsl_getAmplitudeColor(int value);
  */
 NSLTOF_API unsigned int nsl_getSdkVersion(int handle);
 
+
+/**
+ * @brief Returns 3D distance information from an RGB image coordinate
+ *
+ * @param handle : handle value by nsl_open()
+ * @param rgbX :  X coordinate in RGB image space
+ * @param rgbY :  Y coordinate in RGB image space
+ * @param ptNslPcd : pointer to output NslPCD structure. The corresponding 3D point information is written to this structure.
+ *
+ * @return : Distance value of the corresponding point.
+ */
+NSLTOF_API Point3D nsl_getDepthAtPixel(int handle, int rgbX, int rgbY, NslPCD *ptNslPcd);
+
+
+/**
+ * @brief Returns RGB color corresponding to a LiDAR depth coordinate
+ *
+ * @param handle : handle value by nsl_open()
+ * @param lidarX :  X coordinate in Depth space
+ * @param lidarY :  Y coordinate in Depth space
+ * @param rgbData : Pointer to RGB image buffer
+ *
+ * @return : RGB color value corresponding to the specified depth coordinate
+ */
+NSLTOF_API NslOption::NslVec3b nsl_getPixelAtDepth(int handle, int lidarX, int lidarY, NslOption::NslVec3b *rgbData);
 
 #if defined(__cplusplus)
 }
