@@ -20,5 +20,7 @@ NSL31X0-SDK library입니다.
 - 2026년 1월 이후 라이다 제품에 적용됨(firmware version : 3.16)
 - windows는 자동 enumeration 됩니다.
 - linux 및 macos 환경에서 script를 실행하여 libusb를 설치 후 사용하세요.
- - linux : sudo ./install_libusb_linux.sh
- - macos : ./install_libusb_macos.sh
+ - linux : `sudo bash ~/SiriusRobotDT/setup/install_libusb_linux.sh`
+ - macos : `bash ~/SiriusRobotDT/setup/install_libusb_macos.sh`
+
+통합 프로젝트의 설치 wrapper를 사용한다. SDK 자체 스크립트는 이 디렉터리의 `script/` 안에 있다.
