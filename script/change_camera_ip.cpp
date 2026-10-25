@@ -13,9 +13,9 @@
 // Usage:
 //   ./change_camera_ip <new_cam_ip> <new_netmask> <new_gateway> [serial_or_empty]
 // Example (auto-detect any connected Vendor USB camera):
-//   ./change_camera_ip 192.168.2.201 255.255.255.0 192.168.2.1
+//   ./change_camera_ip 192.168.2.101 255.255.255.0 192.168.2.1
 // Example (specific camera by serial):
-//   ./change_camera_ip 192.168.2.201 255.255.255.0 192.168.2.1 N008B060D
+//   ./change_camera_ip 192.168.2.101 255.255.255.0 192.168.2.1 N008B060D
 
 #include <arpa/inet.h>
 #include <chrono>
@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 4 || argc > 5) {
         printf("Usage: %s <new_cam_ip> <new_netmask> <new_gateway> [serial_or_empty]\n", argv[0]);
-        printf("  new_cam_ip   : e.g. 192.168.2.201\n");
+        printf("  new_cam_ip   : e.g. 192.168.2.101\n");
         printf("  new_netmask  : e.g. 255.255.255.0\n");
         printf("  new_gateway  : e.g. 192.168.2.1\n");
         printf("  serial       : 9-char serial (optional, e.g. N008B060D). Default: auto-detect\n");
