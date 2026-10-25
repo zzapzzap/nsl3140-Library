@@ -1,6 +1,10 @@
 # NSL-Library
 NSL31X0-SDK library입니다.
 
+SiriusRobotDT 전체 설치는 프로젝트 루트에서 `source setup/setup.bash`를 실행합니다. Main `.3.166`과 Edge `.3.161–165`는 공통 setup이 실제 LAN IP로 구분합니다. 각 Edge의 독립 카메라 연결은 PC NIC `192.168.2.100`, 카메라 `192.168.2.101`을 사용합니다.
+
+아래 플랫폼·libusb 안내는 SDK를 독립적으로 사용할 때의 제조사 배포 정보입니다. 프로젝트의 ROS 2 설치·서비스 운용은 상위 [SiriusRobotDT README](../../../../../README.md)를 따릅니다. 기본 Ethernet 운용과 USB 준비 절차를 구분해서 적용합니다.
+
 ## 인터페이스
 - NSL 제품의 경우 USB(CDC/Vendor)와 Ethernet을 지원하며, Ethernet의 경우 컨트롤:TCP, 데이터:UDP를 사용합니다.
 
